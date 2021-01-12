@@ -5,9 +5,9 @@ FROM node:10-alpine as builder
 COPY package.json package-lock.json ./
 
 # Install the dependencies and make the folder
-RUN npm install && mkdir /nextjs-ui && mv ./node_modules ./nextjs-ui
+RUN npm install && mkdir /next-pokedex && mv ./node_modules ./next-pokedex
 
-WORKDIR /nextjs-ui
+WORKDIR /next-pokedex
 
 COPY . .
 
@@ -25,7 +25,7 @@ COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy from the stahg 1
-COPY --from=builder /nextjs-ui/out /usr/share/nginx/html
+COPY --from=builder /next-pokedex/out /usr/share/nginx/html
 
 EXPOSE 3000 80
 
