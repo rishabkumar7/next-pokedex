@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "rm -rf ./build && NODE_ENV=production next build",
-    "start": "next start -p 8080",
-    "deploy": "npm run build && gcloud app deploy"
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start"
   },
   "dependencies": {
     "next": "10.0.5",
